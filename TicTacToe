@@ -1,0 +1,81 @@
+#include <iostream>
+using namespace std;
+ 
+void print(char a[3][3] )
+{int s=3;
+for(int i=0;i<s;i++)
+{for(int j=0;j<s;j++)
+{
+	if(a[i][j]=='x'||a[i][j]=='o')
+	
+		cout<<a[i][j]<<" ";
+	
+		else 
+		cout<<"  ";
+		if(j!=2)
+		cout<<'|';}
+		
+		cout<<endl;
+		if(i!=2)
+		{
+			cout<<"_________";
+			cout<<endl;
+		}
+
+}
+
+return;	
+}
+bool win(char a[3][3],char ch)
+{if((a[0][1]==a[0][0]&&a[0][1]==a[0][2])&&a[0][0]==ch)
+return true;
+else if ((a[1][1]==a[1][0]&&a[1][1]==a[1][2])&&a[1][0]==ch)
+return true;
+else if ((a[2][1]==a[2][0]&&a[2][1]==a[2][2])&&a[2][0]==ch)
+return true;
+
+else if((a[0][1]==a[1][1]&&a[1][1]==a[2][1])&&a[2][1]==ch)
+return true;
+else if((a[0][2]==a[1][2]&&a[1][0]==a[2][2])&&a[2][2]==ch)
+return true;
+else if((a[0][0]==a[1][1]&&a[1][1]==a[2][2])&&a[2][2]==ch)
+return true;
+else if((a[2][0]==a[1][1]&&a[1][1]==a[0][2])&&a[1][1]==ch)
+return true;
+return false;
+
+
+}
+
+
+int main(int argc, char** argv) {
+	char a[3][3]={'p'};
+	int r,c;
+	char l;
+	for(int i=0;i<9;i++)
+	{
+		cout<<"enter char:"<<endl;
+		cin>>l;
+		cout<<endl;
+		cout<<"enter row:";
+		cin>>r;
+		cout<<endl;
+		cout<<"enter col:";
+		cin>>c;
+		cout<<endl;
+		a[r][c]=l;
+		print(a);
+		cout<<endl;
+		if(l=='x'){
+		if(win(a,'x'))
+		{cout<<"x won";
+		return 0;}}
+		else if(l=='o'){
+		 if(win(a,'o'))
+		{cout<<"o won";
+		return 0;}}
+	}
+		cout<<"draw";
+	
+	return 0;
+}
